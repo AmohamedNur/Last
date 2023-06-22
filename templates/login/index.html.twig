@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimalController!{% endblock %}
+
+{% block body %}
+    <div class="container bg-dark mt-5">
+        <div class="row">
+            <ul class="nav nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Inloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<div class="container mt-5">
+    <div class="row">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <h1 class="text-center">Inloggen</h1>
+        <p class="text-center">Vul jouw email en wachtwoord in</p>
+
+        <form action="{{ path('app_login') }}" method="post">
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password">
+
+            <input type="hidden"  name="_target_path" value="/redirect">
+
+            {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"> #}
+
+            <button type="submit">login</button>
+        </form>
+    </div>
+
+
+</div>
+{% endblock %}

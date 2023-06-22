@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimalController!{% endblock %}
+
+{% block body %}
+    <div class="container bg-dark mt-5">
+        <div class="row">
+            <ul class="nav nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="/animal">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ path('logout') }}">Uitloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Welkom</h1>
+        <p class="text-center">Dit is member pagine</p>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Dier</th>
+                        <th scope="col">Beschrijving</th>
+                        <th scope="col">landnaam</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for d in dier %}
+                    <tr>
+                        <td>{{ d.name }}</td>
+                        <td>{{ d.description }}</td>
+                        <td>{{ d.user.part }}</td>
+                    </tr>
+               {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

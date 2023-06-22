@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AnimalController!{% endblock %}
+
+{% block body %}
+    <div class="container bg-dark mt-5">
+        <div class="row">
+            <ul class="nav nav-fill">
+                <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="/animal">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="{{ path('app_logout') }}">Uitloggen</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Welkom {{ user.fname }}</h1>
+        <p class="text-center">Je bent een admin</p>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Dier</th>
+                    <th scope="col">Beschrijving</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for dier in dieren %}
+                    <p class="text-center">Jouw dierenland heet:{{ dier.user.part }}</p>
+                    <tr>
+                        <td>{{ dier.name }}</td>
+                        <td>{{ dier.description }}</td>
+                        <td> <button class="btn btn-danger" > <a href="{{ path('delete',{id:dier.id}) }} " class="text-decoration-none text-light">Delete</a></button></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+  <div class="container">
+      <a class="btn btn-dark fs-4" href="{{ path('insert') }}">Insert</a>
+  </div>
+
+{% endblock %}
